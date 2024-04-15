@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* COLORS */
+      --tomato: hsl(4, 100%, 67%);
+      --dark-slate-grey: hsl(234, 29%, 20%);
+      --charcoal-grey: hsl(235, 18%, 26%);
+      --grey: hsl(231, 7%, 60%);
+    }
+
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color: var(--charcoal-grey);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-card {
+      background-color: #fff;
+      height: 33rem;
+      width: 30rem;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: start;
+      padding: 3rem;
+    }
+
+    .success-msg-ctn {
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: space-between;
+    }
+
+    .success-card img {
+      height: 4rem;
+    }
+
+    .title {
+      font-size: 3.5rem;
+      color: var(--dark-slate-grey);
+    }
+
+    .success-msg {
+      line-height: 1.5rem;
+    }
+
+    .button {
+      width: 100%;
+      height: 3.5rem;
+      background-color: var(--dark-slate-grey);
+      color: #fff;
+      border-radius: .8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-image: linear-gradient(
+        to right,  
+        rgb(255, 101, 145), 
+        hsl(18, 100%, 57%));
+      box-shadow: 1px 1px 5px var(--tomato);
+    }
+
+    @media screen and (max-width: 400px) {
+      .success-card {
+        width: 100%;
+        min-height: 100dvh;
+        border-radius: 0;
+        justify-content: space-around;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Success message start -->
+
+  <section class="success-card">
+    <div class="success-msg-ctn">
+      <img src="assets/images/icon-success.svg" alt="success icon">
+      <h1 class="title">Thanks for subscribing!</h1>
+      <p class="success-msg">
+        A confirmation email has been sent to <b id="email"></b> 
+        Please open it and click the button inside to confirm your subscription.
+      </p>
+    </div>
+    <button class="button" onclick="redirect()">
+      Dismiss message
+    </button>
+  </section>
+
+  <!-- Success message end -->
+
+  <script>
+    function redirect(){
+      window.location.href = 'index.html';
+    }
+
+    var email = document.getElementById('email');
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const formEmail = urlParams.get('email');
+
+    email.innerHTML = formEmail;
+  </script>
+
+</body>
+</html>
